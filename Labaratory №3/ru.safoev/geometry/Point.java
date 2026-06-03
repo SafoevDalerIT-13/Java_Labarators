@@ -1,23 +1,20 @@
 package ru.safoev.geometry;
 
 public class Point {
-    // Поля
+    // FIXME: отступ - 4 пробела (п.1)
     private double x;
     private double y;
 
-    //Геттеры и сеттеры
+    //Геттеры и сеттеры - FIXME: должны быть после конструкторов (п.12)
     public double getX() {
         return this.x;
     }
-
     public double getY() {
         return this.y;
     }
-
     public void setX(double x) {
         this.x = x;
     }
-
     public void setY(double y) {
         this.y = y;
     }
@@ -33,26 +30,16 @@ public class Point {
         this.y = y;
     }
 
-    //Метод toString
     @Override
     public String toString() {
         return "Вы создали точку с координатами по x: " + this.x + ", y: " + this.y;
     }
 
-    // Переопределяем методы
-
-    // Метод equals для сравнения точек по координатам
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true; // одна и та же ссылка
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false; // проверка класса
-        }
-        Point other = (Point) obj; // приведение типа
-        return Double.compare(this.x, other.x) == 0 &&
-                Double.compare(this.y, other.y) == 0;
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Point other = (Point) obj;
+        return Double.compare(this.x, other.x) == 0 && Double.compare(this.y, other.y) == 0;
     }
 }
-

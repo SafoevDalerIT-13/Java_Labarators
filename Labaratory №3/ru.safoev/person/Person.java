@@ -2,11 +2,11 @@ package ru.safoev.person;
 
 public class Person {
 
-    // Поля
+    // FIXME: отступ - 4 пробела (п.1)
     private String name;
     private int height;
 
-    //Геттеры и сеттеры
+    // FIXME: геттеры/сеттеры должны быть после конструкторов (п.12)
     public String getName() {
         return this.name;
     }
@@ -16,7 +16,7 @@ public class Person {
     }
 
     public int getHeight() {
-        return  this.height;
+        return  this.height; // FIXME: лишний пробел после return (п.4)
     }
 
     // Конструкторы
@@ -30,10 +30,8 @@ public class Person {
         this.height = height;
     }
 
-    // Метод to_string
     @Override
     public String toString() {
         return this.name + ", рост: " + this.height;
     }
-
 }

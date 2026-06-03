@@ -1,12 +1,23 @@
-package ru.safoev.main;
+/*
+ИСПРАВЛЕНИЯ:
+1. Отступы заменены на табуляцию.
+2. Метод переименован в DemonstrateShooters (PascalCase).
+*/
+package ru.safoev.fix;
 
 import ru.safoev.weapon.Shooter;
 import ru.safoev.weapon.Gun;
 import ru.safoev.weapon.AutomaticGun;
 
+/**
+ * Демонстрирует полиморфизм на примере стрелков с разным оружием.
+ */
 public class PolymorphismDemo {
-    // FIXME: метод demonstrateShooters не в PascalCase (п.7)
-    public static void demonstrateShooters() {
+    /**
+     * Создаёт трёх стрелков (без оружия, с пистолетом, с автоматом)
+     * и демонстрирует их стрельбу.
+     */
+    public static void DemonstrateShooters() {
         System.out.println("=== Демонстрация полиморфизма со стрелками ===");
         Shooter shooter1 = new Shooter("Стрелок без оружия");
         Shooter shooter2 = new Shooter("Стрелок с пистолетом", new Gun(3, 10));

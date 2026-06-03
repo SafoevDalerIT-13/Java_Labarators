@@ -36,7 +36,7 @@ public class AutomaticGun extends Gun {
     @Override
     public void fire() {
         for (int i = 0; i < this.fireRate; i++) {
-            if (ammo > 0) { // Прямой доступ к ammo
+            if (ammo > 0) {
                 super.fire();
             } else {
                 System.out.println("Патроны закончились!");
@@ -45,17 +45,16 @@ public class AutomaticGun extends Gun {
         }
     }
 
-    public void fireSecond(int N) {
+    public void fireSecond(int N) {   // FIXME: не в PascalCase
         if (N <= 0) {
             System.out.println("Время стрельбы должно быть положительным!");
             return;
         }
-
         int totalShots = N * this.fireRate;
         System.out.println("Стрельба в течение " + N + " секунд...");
         int j = 0;
         for (int i = 0; i < totalShots; i++) {
-            if (ammo > 0) { // Прямой доступ к ammo
+            if (ammo > 0) {
                 super.fire();
                 j++;
             } else {

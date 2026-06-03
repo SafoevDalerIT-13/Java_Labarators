@@ -25,8 +25,8 @@ public class Gun extends Weapon {
 
     @Override
     public void shoot() {
-        if (ammo > 0) { // Прямой доступ к ammo
-            ammo--; // Прямое изменение ammo
+        if (ammo > 0) {
+            ammo--;
             System.out.println("Бах!");
         } else {
             System.out.println("Клац!");
@@ -34,41 +34,37 @@ public class Gun extends Weapon {
     }
 
     public int getNumberOfCartridges() {
-        return ammo; // Прямой доступ к ammo
+        return ammo;
     }
 
     public int getMaxOfCartridges() {
         return this.maxOfCartridges;
     }
 
-    // Упрощенный метод перезарядки
     public int reload(int numberOfCartridges) {
         System.out.println("Перезаряжаем пистолет...");
         if (numberOfCartridges < 0) {
             throw new IllegalArgumentException("Количество патронов не может быть отрицательным!");
         }
-
-        int totalAmmo = ammo + numberOfCartridges; // Прямой доступ к ammo
+        int totalAmmo = ammo + numberOfCartridges;
         int res = 0;
-
         if (totalAmmo <= this.maxOfCartridges) {
-            ammo = totalAmmo; // Прямое изменение ammo
+            ammo = totalAmmo;
         } else {
             res = totalAmmo - this.maxOfCartridges;
-            ammo = this.maxOfCartridges; // Прямое изменение ammo
+            ammo = this.maxOfCartridges;
             System.out.println("Добавлено патронов: " + (numberOfCartridges - res));
             System.out.println("Кол-во лишних патрон: " + res);
         }
         System.out.println("После перезарядки: " + ammo);
-
         return res;
     }
 
     public boolean isCharged() {
-        return ammo > 0; // Прямой доступ к ammo
+        return ammo > 0;
     }
 
-    public void chargedOrNotCharged() {
+    public void chargedOrNotCharged() {   // FIXME: не в PascalCase
         if (isCharged()) {
             System.out.println("Пистолет заряжен!");
         } else {
@@ -76,10 +72,9 @@ public class Gun extends Weapon {
         }
     }
 
-    // Упрощенный метод обнуления патронов
     public int unLoad() {
-        int res = ammo; // Прямой доступ к ammo
-        ammo = 0; // Прямое изменение ammo
+        int res = ammo;
+        ammo = 0;
         System.out.println("Вы разрядили пистолет! Возвращено патронов: " + res);
         return res;
     }
@@ -90,12 +85,12 @@ public class Gun extends Weapon {
                 " и максимальной обоймой - " + this.maxOfCartridges;
     }
 
-    public void outMaxOfCartridges() {
+    public void outMaxOfCartridges() {   // FIXME: не в PascalCase
         System.out.println("Максимально кол-во патронов, которых вмещает пистолет: " + this.maxOfCartridges);
     }
 
-    public void outNumberOfCartridges() {
-        System.out.println("Сейчас заряженно патрон: " + ammo); // Прямой доступ к ammo
+    public void outNumberOfCartridges() { // FIXME: не в PascalCase
+        System.out.println("Сейчас заряженно патрон: " + ammo);
     }
 
     public void fire() {

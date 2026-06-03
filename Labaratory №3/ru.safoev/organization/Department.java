@@ -5,13 +5,13 @@ import java.util.List;
 
 public class Department {
 
-    // Поля
+    // FIXME: отступ - 4 пробела (п.1)
+    // FIXME: name1 - неинформативное имя (п.9), лучше departmentName
     private String name1;
     private Employee manager;
     private List<Employee> employees;
 
-
-    //Геттеры и сеттеры
+    // FIXME: геттеры/сеттеры должны быть после конструкторов (п.12)
     public String getName1() {
         return this.name1;
     }
@@ -28,16 +28,15 @@ public class Department {
     public Department() {
         this.name1 = null;
         this.manager = null;
-        this.employees = null;
+        this.employees = null; // FIXME: лучше new ArrayList<>() (п.13)
     }
 
     public Department(String name1) {
         this.name1 = name1;
         this.manager = null;
-        this.employees =new ArrayList<>();
+        this.employees = new ArrayList<>();
     }
 
-    //Метод to_string
     @Override
     public String toString() {
         return this.name1;
@@ -52,6 +51,4 @@ public class Department {
     public List<Employee> getEmployees() {
         return new ArrayList<>(employees);
     }
-
-
 }

@@ -1,11 +1,9 @@
 package ru.safoev.weapon;
 
 public class Shooter {
-    // Поля
     private String name;
     private Weapon weapon;
 
-    //Геттеры и сеттеры
     public String getName() {
         return this.name;
     }
@@ -22,14 +20,13 @@ public class Shooter {
         this.weapon = weapon;
     }
 
-    //Конструкторы
     public Shooter(String name) {
         this.name = name;
         this.weapon = null;
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(Object obj) {  // FIXME: нереализованный метод, лучше убрать
         return super.equals(obj);
     }
 
@@ -38,23 +35,17 @@ public class Shooter {
         this.weapon = weapon;
     }
 
-    //Метод toString
     @Override
     public String toString() {
         return "Вы создали Стрелка с именем - " + getName();
     }
 
-    // Основная способность - стрелять
     public void shoot() {
-        if(weapon != null) {
+        if(weapon != null) {   // FIXME: пробел после if (п.3)
             System.out.print(name + " стреляет: ");
             weapon.shoot();
         } else {
             System.out.println(name + ": не могу участвовать в перестрелке");
         }
     }
-
-
-
-
 }

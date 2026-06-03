@@ -2,12 +2,13 @@ package ru.safoev.person;
 
 public class Name {
 
-    // Поля
-    private final String lastname; // Фамилия
-    private final String firstname; // Имя
-    private final String surname; // Отчество
+    // FIXME: отступ - 4 пробела (п.1)
+    // FIXME: поля не в camelCase (п.8): lastname -> lastName, firstname -> firstName, surname -> patronymic
+    private final String lastname;
+    private final String firstname;
+    private final String surname;
 
-    // Геттеры и сеттеры
+    // FIXME: геттеры должны быть после конструкторов (п.12)
     public String getLastname() {
         return this.lastname;
     }
@@ -46,15 +47,12 @@ public class Name {
         this.surname = surname;
     }
 
-    // Метод to_string
     @Override
     public String toString() {
         String result = "";
-
         if (this.lastname != null && !this.lastname.isEmpty()) {
             result = this.lastname;
         }
-
         if (this.firstname != null && !this.firstname.isEmpty()) {
             if (result.isEmpty()) {
                 result = this.firstname;
@@ -62,7 +60,6 @@ public class Name {
                 result += " " + this.firstname;
             }
         }
-
         if (this.surname != null && !this.surname.isEmpty()) {
             if (result.isEmpty()) {
                 result = this.surname;
@@ -70,18 +67,15 @@ public class Name {
                 result += " " + this.surname;
             }
         }
-
         return result;
     }
 
-
+    // FIXME: метод toString1 - не в PascalCase (п.7), должно быть ToStringAlternative
     public String toString1() {
         String result = "";
-
         if (this.firstname != null && !this.firstname.isEmpty()) {
             result = this.firstname;
         }
-
         if (this.surname != null && !this.surname.isEmpty()) {
             if (result.isEmpty()) {
                 result = this.surname;
@@ -89,7 +83,6 @@ public class Name {
                 result += " " + this.surname;
             }
         }
-
         if (this.lastname != null && !this.lastname.isEmpty()) {
             if (result.isEmpty()) {
                 result = this.lastname;
@@ -97,24 +90,14 @@ public class Name {
                 result += " " + this.lastname;
             }
         }
-
         return result;
     }
 
-    // Валидация: гарантирует, что хотя бы одно поле не null и не пустое
     private void validateAtLeastOneField(String firstname, String lastname, String surname) {
         boolean hasValidField = false;
-
-        if (firstname != null && !firstname.trim().isEmpty()) {
-            hasValidField = true;
-        }
-        if (lastname != null && !lastname.trim().isEmpty()) {
-            hasValidField = true;
-        }
-        if (surname != null && !surname.trim().isEmpty()) {
-            hasValidField = true;
-        }
-
+        if (firstname != null && !firstname.trim().isEmpty()) hasValidField = true;
+        if (lastname != null && !lastname.trim().isEmpty()) hasValidField = true;
+        if (surname != null && !surname.trim().isEmpty()) hasValidField = true;
         if (!hasValidField) {
             throw new IllegalArgumentException("Как минимум одно поле должно быть не null и не пустым");
         }

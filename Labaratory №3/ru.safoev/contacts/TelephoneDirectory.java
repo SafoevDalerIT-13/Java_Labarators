@@ -3,13 +3,13 @@ package ru.safoev.contacts;
 import java.util.*;
 
 public class TelephoneDirectory {
-    // Поля
-    private Map<String,String> telephoneName;
+    // FIXME: отступ - 4 пробела (п.1)
+    private Map<String,String> telephoneName;  // FIXME: пробел после запятой (п.4)
     private Map<String,String> nameTelephone;
 
-    // Геттеры и сеттеры
+    // Геттеры и сеттеры - FIXME: должны быть после конструкторов (п.12)
     public Map<String,String> getTelephoneName() {
-        return this.telephoneName;
+        return this.telephoneName;  // FIXME: возвращает внутреннюю коллекцию (п.14)
     }
 
     public Map<String,String> getNameTelephone() {
@@ -27,13 +27,9 @@ public class TelephoneDirectory {
         this.nameTelephone = new HashMap<>();
     }
 
-    // Метод toString
     @Override
     public String toString() {
-        if (telephoneName.isEmpty()) {
-            return "Телефонный справочник пуст";
-        }
-
+        if (telephoneName.isEmpty()) return "Телефонный справочник пуст";
         String result = "Телефонный справочник\n";
         for (Map.Entry<String, String> entry : telephoneName.entrySet()) {
             result += "Номер телефона - " + entry.getKey() + " Имя - " + entry.getValue() + "\n";
@@ -42,27 +38,23 @@ public class TelephoneDirectory {
     }
 
     // Метод добавления User
-    public String addNewUser(String telephone, String name) {
+    public String addNewUser(String telephone, String name) {  // FIXME: не PascalCase
         String oldPhone = null;
-
         if (telephone == null || name == null) {
             throw new IllegalArgumentException("Телефон и имя не могут быть null");
         }
-
         if (nameTelephone.containsKey(name)) {
             oldPhone = nameTelephone.get(name);
-
             telephoneName.remove(oldPhone);
             nameTelephone.remove(name);
         }
-
         telephoneName.put(telephone, name);
         nameTelephone.put(name, telephone);
-
         return oldPhone;
     }
+
     // Метод удаления user
-    public void deleteUser(String name) {
+    public void deleteUser(String name) { // FIXME: не PascalCase
         if (this.nameTelephone.containsKey(name)) {
             String phone = nameTelephone.get(name);
             nameTelephone.remove(name);
@@ -71,15 +63,14 @@ public class TelephoneDirectory {
     }
 
     // Метод получения данных
-    public String getPhone(String name) {
+    public String getPhone(String name) { // FIXME: не PascalCase
         return nameTelephone.get(name);
     }
 
     // Метод проверки наличия телефона или имени
-    public void checkExists(String key) {
+    public void checkExists(String key) { // FIXME: не PascalCase
         boolean isPhone = telephoneName.containsKey(key);
         boolean isName = nameTelephone.containsKey(key);
-
         if (isPhone) {
             System.out.println("Телефон '" + key + "' есть в списке. Имя: " + telephoneName.get(key));
         } else if (isName) {
@@ -90,7 +81,7 @@ public class TelephoneDirectory {
     }
 
     // Узнаем текущее количество контактов
-    public void sizeMap() {
+    public void sizeMap() { // FIXME: не PascalCase
         if (this.nameTelephone.isEmpty()) {
             System.out.println("Список пуст!");
         } else {
@@ -98,8 +89,8 @@ public class TelephoneDirectory {
         }
     }
 
-    // Полчучаем пары через массив
-    public String[][] pairsArray() {
+    // Получаем пары через массив
+    public String[][] pairsArray() { // FIXME: не PascalCase
         int i = 0;
         String[][] pairs = new String[this.telephoneName.size()][2];
         if(this.telephoneName.isEmpty()) {
@@ -122,7 +113,7 @@ public class TelephoneDirectory {
     }
 
     // Получаем телефоны через массив
-    public String[] telephoneArray() {
+    public String[] telephoneArray() { // FIXME: не PascalCase
         int i =0;
         String[] pairs = new String[this.telephoneName.size()];
         for(Map.Entry<String,String> entry : this.telephoneName.entrySet()) {
@@ -137,8 +128,8 @@ public class TelephoneDirectory {
         return pairs;
     }
 
-    // Получаем именна через массив
-    public String[] nameArray() {
+    // Получаем имена через массив
+    public String[] nameArray() { // FIXME: не PascalCase
         int i =0;
         String[] pairs = new String[this.telephoneName.size()];
         for(Map.Entry<String,String> entry : this.telephoneName.entrySet()) {
@@ -154,16 +145,14 @@ public class TelephoneDirectory {
     }
 
     // Массив имен, начинающихся с указанной строки
-    public String[] namesArrayStartingWith(String prefix) {
+    public String[] namesArrayStartingWith(String prefix) { // FIXME: не PascalCase
         List<String> matchingNames = new ArrayList<>();
-
         for (String name : nameTelephone.keySet()) {
             if (name.toLowerCase().startsWith(prefix.toLowerCase())) {
                 matchingNames.add(name);
             }
         }
         String[] result = matchingNames.toArray(new String[0]);
-
         if (result.length == 0) {
             System.out.println("Имена, начинающиеся с '" + prefix + "' не найдены");
         } else {
@@ -172,9 +161,6 @@ public class TelephoneDirectory {
                 System.out.println((i + 1) + ". " + result[i]);
             }
         }
-
         return result;
     }
-
-
 }
